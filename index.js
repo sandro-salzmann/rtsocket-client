@@ -502,7 +502,7 @@ function (_PureComponent) {
   }, {
     key: "componentWillUnmount",
     value: function componentWillUnmount() {
-      RTSocket.getRTSocket().socket.emit("unsubscribe", this.uuid);
+      RTSocket.getRTSocket().socket.emit("unsubscribe" + this.uuid);
     }
   }, {
     key: "componentDidUpdate",
