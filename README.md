@@ -1,6 +1,6 @@
 # rtsocket-client
 
-> react client component for rtsocket, a socket.io wrapper for real time communication between multiple endpoints
+> react client component for rtsocket, a socket.io wrapper that enables easy synchronization of a data source between multiple clients
 
 ## Usage
 
