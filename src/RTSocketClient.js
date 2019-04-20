@@ -17,6 +17,7 @@ export class RTSocketClient extends PureComponent {
     const socket = RTSocket.getRTSocket().socket;
 
     socket.on(uuid, result => {
+      
       this.setState({ result });
     });
     // no need for a request when query attributes have undefined in them
@@ -28,7 +29,7 @@ export class RTSocketClient extends PureComponent {
   }
 
   componentWillUnmount() {
-    RTSocket.getRTSocket().socket.emit("unsubscribe", this.uuid);
+    RTSocket.getRTSocket().socket.emit("unsubscribe"+this.uuid);
   }
 
   componentDidUpdate(prevProps) {
