@@ -2,7 +2,7 @@
 
 > react client component for rtsocket, a socket.io wrapper that enables easy synchronization of a data source between multiple clients
 
-## Features rtsocket-server and rtsocket-client
+## Features of [rtsocket-server](https://github.com/Sandro404/rtsocket-server) and rtsocket-client
 * Synchronize a data source between groups of clients
 * Customizable authentication system
 
