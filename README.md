@@ -179,6 +179,7 @@ configuration = {
     // NO_PERMISSIONS_TO_MODIFY user doesn't have permissions to modify the data source
     // SUCCESSFUL_MODIFIED modifying succeeded
     // FAILED_TO_MODIFY modifying failed
+    // UNKNOWN_MODIFYING_ERROR an error occurred in the modifying function
     // (see the server documentation for information on how these message get generated)
   }
 }
