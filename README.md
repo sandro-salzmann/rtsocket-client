@@ -19,7 +19,7 @@ npm install rtsocket-client
 
 ### Initialization
 
-Initialize the connection and set some defaults (see API for more settings)
+Initialize the connection (see API for more settings)
 
 ```javascript
 import io from "socket.io-client";
