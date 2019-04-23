@@ -27,37 +27,33 @@ function () {
     }
 
     this.socket = socket;
-    this.readScreens = readScreens || {
-      loading: {
-        text: "",
-        showAtDefault: false
-      },
-      noPermissionsToRead: {
-        text: "",
-        showAtDefault: false
-      },
-      requestedElementOrListDeleted: {
-        text: "",
-        showAtDefault: false
-      },
-      requestedElementOrListNotFound: {
-        text: "",
-        showAtDefault: false
-      },
-      requestedListEmpty: {
-        text: "",
-        showAtDefault: false
-      },
-      queryIncomplete: {
-        text: "",
-        showAtDefault: false
-      }
-    };
+    this.readScreens = this.completeReadScreens(readScreens);
 
     this.defaultModifyCallback = handleModifyCallback || function () {};
   }
 
   _createClass(RTSocket, [{
+    key: "completeReadScreens",
+    value: function completeReadScreens(readScreens) {
+      var _this = this;
+
+      var readScreenKeys = ["loading", "noPermissionsToRead", "requestedElementOrListDeleted", "requestedElementOrListNotFound", "requestedListEmpty", "queryIncomplete"];
+      var completedReadScreens = {};
+      readScreenKeys.forEach(function (readScreenKey) {
+        completedReadScreens[readScreenKey] = _this.completeReadScreen(readScreens[readScreenKey]);
+      });
+      return completedReadScreens;
+    }
+  }, {
+    key: "completeReadScreen",
+    value: function completeReadScreen() {
+      var readScreen = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      return {
+        text: readScreen.text || "",
+        showAtDefault: readScreen.showAtDefault || false
+      };
+    }
+  }, {
     key: "change",
     value: function change(name, queryAttributes, uuid, customCallback) {
       var defaultModifyCallback = this.defaultModifyCallback;

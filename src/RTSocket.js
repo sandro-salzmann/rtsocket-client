@@ -11,33 +11,33 @@ export class RTSocket {
       );
     }
     this.socket = socket;
-    this.readScreens = readScreens || {
-      loading: {
-        text: "",
-        showAtDefault: false
-      },
-      noPermissionsToRead: {
-        text: "",
-        showAtDefault: false
-      },
-      requestedElementOrListDeleted: {
-        text: "",
-        showAtDefault: false
-      },
-      requestedElementOrListNotFound: {
-        text: "",
-        showAtDefault: false
-      },
-      requestedListEmpty: {
-        text: "",
-        showAtDefault: false
-      },
-      queryIncomplete: {
-        text: "",
-        showAtDefault: false
-      }
-    };
+    this.readScreens = this.completeReadScreens(readScreens);
     this.defaultModifyCallback = handleModifyCallback || function() {};
+  }
+
+  completeReadScreens(readScreens) {
+    let readScreenKeys = [
+      "loading",
+      "noPermissionsToRead",
+      "requestedElementOrListDeleted",
+      "requestedElementOrListNotFound",
+      "requestedListEmpty",
+      "queryIncomplete"
+    ];
+    let completedReadScreens = {};
+    readScreenKeys.forEach(readScreenKey => {
+      completedReadScreens[readScreenKey] = this.completeReadScreen(
+        readScreens[readScreenKey]
+      );
+    });
+    return completedReadScreens;
+  }
+
+  completeReadScreen(readScreen = {}) {
+    return {
+      text: readScreen.text || "",
+      showAtDefault: readScreen.showAtDefault || false
+    };
   }
 
   static initialize(config) {
