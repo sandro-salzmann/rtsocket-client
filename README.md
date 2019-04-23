@@ -3,8 +3,9 @@
 > react client component for rtsocket, a socket.io wrapper that enables easy synchronization of a data source between multiple clients
 
 ## Features of [rtsocket-server](https://github.com/Sandro404/rtsocket-server) and rtsocket-client
-* Synchronize a data source between groups of clients
-* Customizable authentication system
+
+- Synchronize a data source between groups of clients
+- Customizable authentication system
 
 ## Usage
 
@@ -18,57 +19,13 @@ npm install rtsocket-client
 
 ### Initialization
 
-Initialize the connection and set some defaults (see API for detailed explanation)
+Initialize the connection and set some defaults (see API for more settings)
 
 ```javascript
 import io from "socket.io-client";
 import { RTSocket } from "rtsocket-client";
 
-RTSocket.initialize({
-  socket: io("localhost:8080"),
-  readScreens: {
-    loading: {
-      text: "Loading...",
-      showAtDefault: true
-    },
-    noPermissionsToRead: {
-      text: "No permissions to read that!",
-      showAtDefault: true
-    },
-    requestedElementOrListDeleted: {
-      text: "The data has been deleted.",
-      showAtDefault: true
-    },
-    requestedElementOrListNotFound: {
-      text: "The data couldn't be found.",
-      showAtDefault: true
-    },
-    requestedListEmpty: {
-      text: "The list is empty.",
-      showAtDefault: true
-    },
-    queryIncomplete: {
-      text: "The query seems incomplete.",
-      showAtDefault: true
-    }
-  },
-  handleModifyCallback: message => {
-    switch (message) {
-      case "NO_PERMISSIONS_TO_MODIFY":
-        alert("No permissions to do that.")
-        break;
-      case "SUCCESSFUL_MODIFIED":
-        alert("Successfully modified the data.")
-        break;
-      case "FAILED_TO_MODIFY":
-        alert("Failed to modify the data.")
-        break;
-      default:
-        alert("Unknown error.")
-        break;
-    }
-  }
-});
+RTSocket.initialize({socket: io("localhost:8080")});
 ```
 
 ### Usage: Read, Modify and Authenticate
@@ -199,7 +156,7 @@ let queryAttributes = {{id: 5}}
 ```javascript
 // authentication object you can use on the server to generate the socket's authentication status
 let authentication = {login: "Peter", password: "123"}
-callback = response => {
+let callback = response => {
   // function gets called when socket uses the authenticate function
   // the response can be genereated in the server authentication function
 }
