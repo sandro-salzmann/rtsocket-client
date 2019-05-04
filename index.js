@@ -34,9 +34,10 @@ function () {
 
   _createClass(RTSocket, [{
     key: "completeReadScreens",
-    value: function completeReadScreens(readScreens) {
+    value: function completeReadScreens() {
       var _this = this;
 
+      var readScreens = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
       var readScreenKeys = ["loading", "noPermissionsToRead", "requestedElementOrListDeleted", "requestedElementOrListNotFound", "requestedListEmpty", "queryIncomplete"];
       var completedReadScreens = {};
       readScreenKeys.forEach(function (readScreenKey) {
