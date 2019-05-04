@@ -15,7 +15,7 @@ export class RTSocket {
     this.defaultModifyCallback = handleModifyCallback || function() {};
   }
 
-  completeReadScreens(readScreens) {
+  completeReadScreens(readScreens = {}) {
     let readScreenKeys = [
       "loading",
       "noPermissionsToRead",
