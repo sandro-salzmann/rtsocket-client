@@ -7,9 +7,7 @@ export class RTSocketClient extends PureComponent {
     this.uuid = uuid();
   }
 
-  state = {
-    result: undefined
-  };
+  state = { result: undefined };
 
   componentDidMount() {
     const { name, queryAttributes } = this.props;
