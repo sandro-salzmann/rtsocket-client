@@ -1,22 +1,21 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.RTSocket = void 0;
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
 
 var RTSocket =
 /*#__PURE__*/
 function () {
   function RTSocket(config) {
-    _classCallCheck(this, RTSocket);
-
+    (0, _classCallCheck2["default"])(this, RTSocket);
     if (config === undefined) throw new Error("Missing configuration for RTSocket");
     var socket = config.socket,
         readScreens = config.readScreens,
@@ -32,7 +31,7 @@ function () {
     this.defaultModifyCallback = handleModifyCallback || function () {};
   }
 
-  _createClass(RTSocket, [{
+  (0, _createClass2["default"])(RTSocket, [{
     key: "completeReadScreens",
     value: function completeReadScreens() {
       var _this = this;
@@ -82,144 +81,89 @@ function () {
       }
     }
   }]);
-
   return RTSocket;
 }();
 
 exports.RTSocket = RTSocket;
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.RTSocketClient = void 0;
 
+var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
+
+var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
+
+var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
+
+var _getPrototypeOf2 = _interopRequireDefault(require("@babel/runtime/helpers/getPrototypeOf"));
+
+var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
+
+var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
+
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
+
 var _react = require("react");
 
 var _v = _interopRequireDefault(require("uuid/v1"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 var RTSocketClient =
 /*#__PURE__*/
 function (_PureComponent) {
-  _inherits(RTSocketClient, _PureComponent);
+  (0, _inherits2["default"])(RTSocketClient, _PureComponent);
 
   function RTSocketClient(props) {
     var _this;
 
-    _classCallCheck(this, RTSocketClient);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(RTSocketClient).call(this, props));
-
-    _defineProperty(_assertThisInitialized(_this), "state", {
+    (0, _classCallCheck2["default"])(this, RTSocketClient);
+    _this = (0, _possibleConstructorReturn2["default"])(this, (0, _getPrototypeOf2["default"])(RTSocketClient).call(this, props));
+    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "state", {
       result: undefined
     });
+    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "updateResult", function (result) {
+      var _this$props$onChange = _this.props.onChange,
+          onChange = _this$props$onChange === void 0 ? function () {} : _this$props$onChange;
 
-    _this.uuid = (0, _v["default"])();
+      _this.setState({
+        result: result
+      });
+
+      onChange(result, _v["default"]);
+    });
+    _this.RTSocketSync = new RTSocketSync();
+
+    _this.RTSocketSync.init((0, _assertThisInitialized2["default"])(_this), _this.updateResult);
+
     return _this;
   }
 
-  _createClass(RTSocketClient, [{
+  (0, _createClass2["default"])(RTSocketClient, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var _this2 = this;
-
-      var _this$props = this.props,
-          name = _this$props.name,
-          queryAttributes = _this$props.queryAttributes;
-      var uuid = this.uuid;
-      var socket = RTSocket.getRTSocket().socket;
-      socket.on(uuid, function (result) {
-        _this2.setState({
-          result: result
-        });
-      }); // no need for a request when query attributes have undefined in them
-
-      if (this.hasUndefinedChildren(queryAttributes, true)) {
-        this.setState({
-          result: "QUERY_INCOMPLETE"
-        });
-        return;
-      }
-
-      socket.emit(name, uuid, queryAttributes);
+      this.RTSocketSync.open(this);
     }
   }, {
     key: "componentWillUnmount",
     value: function componentWillUnmount() {
-      RTSocket.getRTSocket().socket.emit("unsubscribe" + this.uuid);
+      this.RTSocketSync.close(this);
     }
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
-      var _this$props2 = this.props,
-          queryAttributes = _this$props2.queryAttributes,
-          name = _this$props2.name;
-      var socket = RTSocket.getRTSocket().socket;
-
-      if (JSON.stringify(prevProps.queryAttributes) !== JSON.stringify(queryAttributes)) {
-        if (!this.hasUndefinedChildren(prevProps.queryAttributes, true)) {
-          socket.emit("unsubscribe", this.uuid);
-        }
-
-        if (this.hasUndefinedChildren(queryAttributes, true)) {
-          this.setState({
-            result: "QUERY_INCOMPLETE"
-          });
-        } else {
-          socket.emit(name, this.uuid, queryAttributes);
-        }
-      }
-    }
-  }, {
-    key: "hasUndefinedChildren",
-    value: function hasUndefinedChildren(item, isRoot) {
-      var _this3 = this;
-
-      var hasUndefined = isRoot ? false : item === undefined;
-      var type = Object.prototype.toString.call(item);
-
-      if (type == "[object Object]") {
-        for (var key in item) {
-          var child = item[key];
-          hasUndefined = hasUndefined || this.hasUndefinedChildren(child, false);
-        }
-      } else if (type == "[object Array]") {
-        item.forEach(function (queryAttribute) {
-          hasUndefined = hasUndefined || _this3.hasUndefinedChildren(queryAttribute, false);
-        });
-      }
-
-      return hasUndefined;
+      this.RTSocketSync.update(this, prevProps);
     }
   }, {
     key: "render",
     value: function render() {
       var result = this.state.result;
-      var _this$props3 = this.props,
-          showLoading = _this$props3.showLoading,
-          showQueryIncomplete = _this$props3.showQueryIncomplete;
+      var _this$props = this.props,
+          showLoading = _this$props.showLoading,
+          showQueryIncomplete = _this$props.showQueryIncomplete;
       var _RTSocket$getRTSocket = RTSocket.getRTSocket().readScreens,
           loading = _RTSocket$getRTSocket.loading,
           queryIncomplete = _RTSocket$getRTSocket.queryIncomplete;
@@ -236,12 +180,13 @@ function (_PureComponent) {
     key: "renderResult",
     value: function renderResult(result) {
       var uuid = this.uuid;
-      var _this$props4 = this.props,
-          render = _this$props4.render,
-          showNoPermissionsToRead = _this$props4.showNoPermissionsToRead,
-          showRequestedElementDeleted = _this$props4.showRequestedElementDeleted,
-          showRequestedElementOrListNotFound = _this$props4.showRequestedElementOrListNotFound,
-          showRequestedListEmpty = _this$props4.showRequestedListEmpty;
+      var _this$props2 = this.props,
+          _this$props2$render = _this$props2.render,
+          render = _this$props2$render === void 0 ? function () {} : _this$props2$render,
+          showNoPermissionsToRead = _this$props2.showNoPermissionsToRead,
+          showRequestedElementDeleted = _this$props2.showRequestedElementDeleted,
+          showRequestedElementOrListNotFound = _this$props2.showRequestedElementOrListNotFound,
+          showRequestedListEmpty = _this$props2.showRequestedListEmpty;
       var _RTSocket$getRTSocket2 = RTSocket.getRTSocket().readScreens,
           noPermissionsToRead = _RTSocket$getRTSocket2.noPermissionsToRead,
           requestedElementDeleted = _RTSocket$getRTSocket2.requestedElementDeleted,
@@ -262,7 +207,7 @@ function (_PureComponent) {
           return this.getScreen(requestedListEmpty, showRequestedListEmpty);
 
         default:
-          return render(result, uuid);
+          return render(result, uuid) || "";
       }
     }
   }, {
@@ -271,8 +216,95 @@ function (_PureComponent) {
       return explicitShowScreen === true ? screen.text : explicitShowScreen === false ? "" : screen.showAtDefault ? screen.text : "";
     }
   }]);
-
   return RTSocketClient;
 }(_react.PureComponent);
 
 exports.RTSocketClient = RTSocketClient;
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.RTSocketSync = void 0;
+
+var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
+
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
+
+var _v = _interopRequireDefault(require("uuid/v1"));
+
+var RTSocketSync = function RTSocketSync() {
+  var _this = this;
+
+  (0, _classCallCheck2["default"])(this, RTSocketSync);
+  (0, _defineProperty2["default"])(this, "init", function (namespace, updateResult) {
+    _this.namespace = namespace;
+    _this.updateResult = updateResult;
+    _this.socket = RTSocket.getRTSocket().socket;
+    namespace.uuid = (0, _v["default"])();
+  });
+  (0, _defineProperty2["default"])(this, "open", function () {
+    var namespace = _this.namespace,
+        socket = _this.socket,
+        updateResult = _this.updateResult,
+        containsUndefined = _this.containsUndefined;
+    var uuid = namespace.uuid;
+    var _namespace$props = namespace.props,
+        name = _namespace$props.name,
+        queryAttributes = _namespace$props.queryAttributes; // define handler to get results
+
+    socket.on(uuid, function (result) {
+      return updateResult(result);
+    }); // no need for a request when query attributes have undefined in them
+
+    if (containsUndefined(queryAttributes, true)) updateResult("QUERY_INCOMPLETE");else socket.emit(name, {
+      uuid: uuid,
+      queryAttributes: queryAttributes
+    });
+  });
+  (0, _defineProperty2["default"])(this, "update", function (namespace, prevProps) {
+    var socket = _this.socket,
+        containsUndefined = _this.containsUndefined,
+        updateResult = _this.updateResult;
+    var uuid = namespace.uuid;
+    var _namespace$props2 = namespace.props,
+        queryAttributes = _namespace$props2.queryAttributes,
+        name = _namespace$props2.name;
+    var prevQueryAttributes = prevProps.queryAttributes;
+    var haveQueryAttributesChanged = JSON.stringify(prevQueryAttributes) !== JSON.stringify(queryAttributes);
+
+    if (haveQueryAttributesChanged) {
+      // unsubscribe from previous query attributes
+      if (!containsUndefined(prevQueryAttributes, true)) socket.emit("unsubscribe" + uuid); // subscribe with new query attributes
+
+      if (containsUndefined(queryAttributes, true)) updateResult("QUERY_INCOMPLETE");else socket.emit(name, {
+        uuid: uuid,
+        queryAttributes: queryAttributes
+      });
+    }
+  });
+  (0, _defineProperty2["default"])(this, "close", function () {
+    _this.socket.emit("unsubscribe" + _this.namespace.uuid);
+  });
+  (0, _defineProperty2["default"])(this, "containsUndefined", function (item, isRoot) {
+    var hasUndefined = isRoot ? false : item === undefined;
+    var type = Object.prototype.toString.call(item);
+
+    if (type == "[object Object]") {
+      for (var key in item) {
+        var child = item[key];
+        hasUndefined = hasUndefined || _this.containsUndefined(child, false);
+      }
+    } else if (type == "[object Array]") {
+      item.forEach(function (item) {
+        hasUndefined = hasUndefined || _this.containsUndefined(item, false);
+      });
+    }
+
+    return hasUndefined;
+  });
+};
+
+exports.RTSocketSync = RTSocketSync;

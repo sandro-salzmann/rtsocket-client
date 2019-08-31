@@ -4,66 +4,29 @@ import uuid from "uuid/v1";
 export class RTSocketClient extends PureComponent {
   constructor(props) {
     super(props);
-    this.uuid = uuid();
+    this.RTSocketSync = new RTSocketSync();
+    this.RTSocketSync.init(this, this.updateResult);
   }
 
   state = { result: undefined };
 
-  componentDidMount() {
-    const { name, queryAttributes } = this.props;
-    const { uuid } = this;
-    const socket = RTSocket.getRTSocket().socket;
+  updateResult = result => {
+    const { onChange = () => {} } = this.props;
 
-    socket.on(uuid, result => {
-      
-      this.setState({ result });
-    });
-    // no need for a request when query attributes have undefined in them
-    if (this.hasUndefinedChildren(queryAttributes, true)) {
-      this.setState({ result: "QUERY_INCOMPLETE" });
-      return;
-    }
-    socket.emit(name, uuid, queryAttributes);
+    this.setState({ result });
+    onChange(result, uuid);
+  };
+
+  componentDidMount() {
+    this.RTSocketSync.open(this);
   }
 
   componentWillUnmount() {
-    RTSocket.getRTSocket().socket.emit("unsubscribe"+this.uuid);
+    this.RTSocketSync.close(this);
   }
 
   componentDidUpdate(prevProps) {
-    const { queryAttributes, name } = this.props;
-    const socket = RTSocket.getRTSocket().socket;
-
-    if (
-      JSON.stringify(prevProps.queryAttributes) !==
-      JSON.stringify(queryAttributes)
-    ) {
-      if (!this.hasUndefinedChildren(prevProps.queryAttributes, true)) {
-        socket.emit("unsubscribe", this.uuid);
-      }
-      if (this.hasUndefinedChildren(queryAttributes, true)) {
-        this.setState({ result: "QUERY_INCOMPLETE" });
-      } else {
-        socket.emit(name, this.uuid, queryAttributes);
-      }
-    }
-  }
-
-  hasUndefinedChildren(item, isRoot) {
-    let hasUndefined = isRoot ? false : item === undefined;
-    let type = Object.prototype.toString.call(item);
-    if (type == "[object Object]") {
-      for (var key in item) {
-        let child = item[key];
-        hasUndefined = hasUndefined || this.hasUndefinedChildren(child, false);
-      }
-    } else if (type == "[object Array]") {
-      item.forEach(queryAttribute => {
-        hasUndefined =
-          hasUndefined || this.hasUndefinedChildren(queryAttribute, false);
-      });
-    }
-    return hasUndefined;
+    this.RTSocketSync.update(this, prevProps);
   }
 
   render() {
