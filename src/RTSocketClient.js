@@ -114,7 +114,7 @@ export class RTSocketClient extends PureComponent {
       case "REQUESTED_LIST_EMPTY":
         return this.getScreen(requestedListEmpty, showRequestedListEmpty);
       default:
-        return render(result, uuid);
+        return render(result, uuid) || "";
     }
   }
 
