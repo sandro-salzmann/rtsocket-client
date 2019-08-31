@@ -76,7 +76,7 @@ export class RTSocketClient extends PureComponent {
     if (result === undefined) {
       return this.getScreen(loading, showLoading);
     } else if (result === "QUERY_INCOMPLETE") {
-      return this.getScreen(queryIncomplete, showQueryIncomplete)
+      return this.getScreen(queryIncomplete, showQueryIncomplete);
     } else {
       return this.renderResult(result);
     }
