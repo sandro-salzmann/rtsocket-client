@@ -85,7 +85,7 @@ export class RTSocketClient extends PureComponent {
   renderResult(result) {
     const { uuid } = this;
     const {
-      render,
+      render = () => {},
       showNoPermissionsToRead,
       showRequestedElementDeleted,
       showRequestedElementOrListNotFound,
