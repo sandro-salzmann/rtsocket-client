@@ -1,5 +1,4 @@
 import { PureComponent } from "react";
-import uuid from "uuid/v1";
 
 export class RTSocketClient extends PureComponent {
   constructor(props) {
@@ -11,6 +10,7 @@ export class RTSocketClient extends PureComponent {
   state = { result: undefined };
 
   updateResult = result => {
+    const { uuid } = this;
     const { onChange = () => {} } = this.props;
 
     this.setState({ result });

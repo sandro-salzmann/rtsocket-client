@@ -110,8 +110,6 @@ var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/de
 
 var _react = require("react");
 
-var _v = _interopRequireDefault(require("uuid/v1"));
-
 var RTSocketClient =
 /*#__PURE__*/
 function (_PureComponent) {
@@ -126,6 +124,9 @@ function (_PureComponent) {
       result: undefined
     });
     (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "updateResult", function (result) {
+      var _assertThisInitialize = (0, _assertThisInitialized2["default"])(_this),
+          uuid = _assertThisInitialize.uuid;
+
       var _this$props$onChange = _this.props.onChange,
           onChange = _this$props$onChange === void 0 ? function () {} : _this$props$onChange;
 
@@ -133,7 +134,7 @@ function (_PureComponent) {
         result: result
       });
 
-      onChange(result, _v["default"]);
+      onChange(result, uuid);
     });
     _this.RTSocketSync = new RTSocketSync();
 
